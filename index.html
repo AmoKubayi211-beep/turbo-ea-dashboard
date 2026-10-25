@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turbo EA Dashboard</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:24px;font-family:Arial,sans-serif;background:#0b1220;color:#f5f7ff}
+main{max-width:850px;margin:auto}
+header,.panel{background:#172238;border:1px solid #2b3b55;border-radius:14px;padding:20px;margin-bottom:16px}
+h1{color:#35d49a;margin-bottom:6px}
+.muted{color:#aab8ce}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.stat{background:#22314a;border-radius:10px;padding:14px}
+label{display:block;margin:12px 0 6px}
+input,select{width:100%;padding:11px;border-radius:7px;border:1px solid #42516a;background:#0b1220;color:white}
+button{padding:12px 16px;border:0;border-radius:8px;font-weight:bold;cursor:pointer;margin:12px 8px 0 0}
+.start{background:#35d49a;color:#07130e}
+.stop{background:#ff7373;color:#240909}
+</style>
+</head>
+<body>
+<main>
+<header>
+<h1>⚡ TURBO EA</h1>
+<p class="muted">MT5 Demo Dashboard · Practice environment</p>
+<div class="grid">
+<div class="stat">Connection<br><strong>Not connected</strong></div>
+<div class="stat">Account<br><strong>Demo setup</strong></div>
+<div class="stat">Timeframe<br><strong>M5 · 5 minutes</strong></div>
+<div class="stat">Strategy<br><strong>3-candle + EMA 10</strong></div>
+</div>
+</header>
+<section class="panel">
+<h2>Bot settings</h2>
+<label for="symbol">Chart symbol</label>
+<input id="symbol" value="Chart symbol" />
+<label for="lots">Lot size</label>
+<input id="lots" type="number" min="0.01" step="0.01" value="0.01" />
+<label for="sl">Stop loss (points)</label>
+<input id="sl" type="number" min="1" value="300" />
+<label for="tp">Take profit (points)</label>
+<input id="tp" type="number" min="1" value="600" />
+<p id="status">Status: Practice mode stopped</p>
+<button class="start" onclick="practice(true)">Start practice</button>
+<button class="stop" onclick="practice(false)">Stop practice</button>
+<p class="muted">Prototype only: these buttons change the display status. They do not connect to MT5 or place trades.</p>
+</section>
+<section class="panel">
+<h2>Account report</h2>
+<div class="grid">
+<div class="stat">Balance<br><strong>Not connected</strong></div>
+<div class="stat">Profit / loss<br><strong>Not connected</strong></div>
+<div class="stat">Open trades<br><strong>Not connected</strong></div>
+</div>
+</section>
+</main>
+<script>
+function practice(start){
+ document.getElementById("status").textContent =
+ start ? "Status: Practice mode started (simulation only)" :
+ "Status: Practice mode stopped";
+}
+</script>
+</body>
+</html>
